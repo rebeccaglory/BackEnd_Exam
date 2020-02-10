@@ -107,7 +107,7 @@ app.put('/categories/:id', (req,res) => {
 
 app.delete('/categories/:id', (req,res) => {
     console.log(req.params)
-    const query = `DELETE FROM categories WHERE id = ${connection.escape(req.params.id)}`;
+    const query = `DELETE FROM productcat WHERE productId = ${connection.escape(req.params.productid)}`;
     
     connection.query(query,(err,results) => {
         if(err) {
