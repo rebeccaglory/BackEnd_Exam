@@ -37,6 +37,22 @@ app.get('/categories', (req,res) => {
       });
 })
 
+app.get('/categories/:id', (req,res) => {
+    console.log(req.query)
+    const query = `select * 
+    from categories
+    where id = ${connection.escape(req.params.id)};`
+    
+    connection.query(query, (err, arrProducts) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).send(err)
+        }
+        console.log(arrProducts)
+        res.status(200).send(arrProducts)
+      });
+})
+
 app.get('/categories/:nama', (req,res) => {
     console.log(req.params.nama)
 
